@@ -1,0 +1,35 @@
+// FONT
+@font-face {
+  font-family: 'Overpass';
+  font-style: normal;
+  font-weight: 500;
+  src: url('./font/OverpassMono-Regular.ttf') format('ttf');
+}
+
+/**CSS*RESET**/
+html {box-sizing: border-box;font-size: 16px;}*, *:before, *:after {box-sizing: border-box;}body, h1, h2, h3, h4, h5, h6, p, ol, ul {margin: 0;padding: 0;font-weight:normal;}ol, ul {list-style: none;}img {max-width: 100%;height: auto;}
+/************/
+
+/**VARIABLES**/
+:root {
+    --dark:  #121212;
+    --clear: #ffffff;
+    --color1:#99e3af;
+    --color2:#a7e9b6;
+    --color3:#2eb089;
+}
+
+p, span, h1, h2, h3, h4, h5, h6, a, button, input, select, textarea, input[type="text"], input[type="text"]::placeholder{
+  font-family: "Overpass", monospace;
+  font-family: monospace;
+}
+
+#app {
+  background-image: url('@/assets/svg/topography.svg');
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-items: center center;
+  background-color: var(--color1);    
+}
