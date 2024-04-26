@@ -61,9 +61,9 @@ function tellFortune() {
       <a class="com" href="https://facebook.com">Facebook</a>
       <a class="com" href="https://gmail.com">Gmail</a>
       <a class="com" href="https://youtube.com">Youtube</a>
-      <a class="org" href="https://4chan.org">4chan</a>
       <a class="com" href="https://www.reddit.com">Reddit</a>
       <a class="com" href="https://unsplash.com/">Unsplash</a>
+      <!-- <a class="org" href="https://4chan.org">4chan</a> -->
     </div>
   </div>
 
@@ -74,19 +74,19 @@ function tellFortune() {
     </div>
     <div class="content">
       <form action="https://www.google.com/search">
-        <p>google</p><input type="text" name="q" placeholder="sharks & tornados ? ..." autofocus>
+        <p>Google</p><input type="text" name="q" placeholder="sharks & tornados ? ..." autofocus autocomplete="off" />
       </form>
       <form action="https://www.youtube.com/search">
-        <p>youtube</p><input type="text" name="q" placeholder="sharknado theme ...">
+        <p>Youtube</p><input type="text" name="q" placeholder="sharknado theme ..." autocomplete="off" />
       </form>
       <form action="https://en.wikipedia.org/w/index.php">
-        <p>wikipedia</p><input type="text" name="search" placeholder="sharknado cast ...">
+        <p>Wikipedia</p><input type="text" name="search" placeholder="sharknado cast ..." autocomplete="off" />
       </form>
       <form action="https://www.senscritique.com/recherche">
-        <p>senscritique</p><input type="text" name="query" placeholder="sharknado ...">
+        <p>Senscritique</p><input type="text" name="query" placeholder="sharknado ..." autocomplete="off" />
       </form>
       <form action="https://www.discogs.com/search">
-        <p>discogs</p><input type="text" name="q" placeholder="sharknado OST ...">
+        <p>Discogs</p><input type="text" name="q" placeholder="sharknado OST ..." autocomplete="off" />
       </form>
     </div>
   </div>
@@ -119,6 +119,11 @@ function tellFortune() {
   padding: 2px;
   border: 2px solid var(--color3);
   transition: margin .3s ease-out;
+
+  &:hover h2 {
+    opacity: 1;
+    visibility: visible;
+  }
 }
 
 .top {
@@ -143,21 +148,12 @@ function tellFortune() {
   cursor: pointer;
 }
 
-.mid:hover h2,
-.bot:hover h2,
-.top:hover h2 {
-  opacity: 1;
-  visibility: visible;
-}
-
-.mid:hover h2::after,
-.bot:hover h2::after {
-  opacity: 1;
-  visibility: visible;
-}
-
-.box .content {
-  transition: all .2s .2s;
+.mid:hover,
+.bot:hover {
+  h2::after {
+    opacity: 1;
+    visibility: visible;
+  }
 }
 
 a {
@@ -165,40 +161,48 @@ a {
   color: var(--dark);
   font-size: 1rem;
   display: block;
-  padding: 1.25rem 0 0.5rem 0;
+  padding: 0.5rem 0;
   border-bottom: 2px solid var(--color3);
   width: 15rem;
   transition: padding-left .3s ease;
-}
 
-a::after,
-img {
-  transition: all .3s ease;
-}
+  &::after {
+    transition: all .3s ease;
+  }
 
-a:hover {
-  padding-left: 1rem;
-}
+  &:hover {
+    padding-left: 1rem;
 
-a:hover::after {
-  content: ">";
-  padding-left: 1rem;
-  width: 1rem;
+    &::after {
+      content: ">";
+      padding-left: 1rem;
+      width: 1rem;
+    }
+  }
 }
 
 .com::after {
   content: ".com";
   color: var(--color3);
+  font-weight: 600;
 }
 
 .org::after {
   content: ".org";
   color: var(--color3);
+  font-weight: 600;
 }
 
-.content p {
+p {
   width: 15rem;
-  margin-top: .5rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  width: 15rem;
 }
 
 input[type=text] {
@@ -209,34 +213,35 @@ input[type=text] {
   background-color: var(--color1);
   color: var(--dark);
   font-size: 1rem;
-  width: 15rem;
+  width: 100%;
   transition: padding-left .3s ease;
+
+  &:hover {
+    padding-left: 1rem;
+  }
+
+  &::-webkit-input-placeholder,
+  &::placeholder {
+    color: var(--color3);
+    font-size: 1rem;
+    font-weight: 600;
+    opacity: 1;
+  }
 }
 
-input[type=text]:hover {
-  padding-left: 1rem;
-}
-
-form:not(:last-child) {
-  margin-bottom: 1rem;
-}
-
-.content :last-child {
-  margin-bottom: 0;
-}
-
-::-webkit-input-placeholder {
-  color: var(--color3);
-  font-size: 1rem;
-}
-
-::placeholder {
-  color: var(--color3);
-  font-size: 1rem;
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  gap: 1rem;
 }
 
 :deep(span) {
   color: var(--color3);
+  font-weight: 600;
 }
 
 .title {
@@ -262,15 +267,15 @@ h2 {
   font-weight: 700;
   color: var(--dark);
   transition: all .3s ease;
-}
 
-h2::after {
-  content: ">";
-  opacity: 0;
-  visibility: hidden;
-  padding-left: 1rem;
-  width: 1rem;
-  color: var(--color3);
+  &::after {
+    content: ">";
+    opacity: 0;
+    visibility: hidden;
+    padding-left: 1rem;
+    width: 1rem;
+    color: var(--color3);
+  }
 }
 
 h3 {
@@ -282,10 +287,6 @@ h3 {
   transition: all .3s ease;
   opacity: 0;
   visibility: hidden;
-}
-
-h2, h3 {
-  font-size: 1rem;
 }
 
 img {
@@ -304,8 +305,49 @@ img {
 .v-leave-active {
   transition: opacity 0.3s ease;
 }
+
 .v-enter-from,
 .v-leave-to {
   opacity: 0;
+}
+
+
+// media queries
+@media (max-width: 40rem) {
+  .box {
+    width: calc(100vw - 4rem);
+    height: calc(100vh - 10rem);
+  }
+
+  .top {
+    margin-top: 6rem;
+    margin-left: 0;
+    // margin-left: 2rem;
+  }
+
+  .bot {
+    margin-top: -6rem;
+    margin-left: 0;
+    // margin-left: -2rem;
+  }
+
+  .title:hover {
+    padding: 0;
+  }
+
+  .switch {
+    display: none;
+  }
+
+  .change {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  a,
+  p,
+  form {
+    width: 90%;
+  }
 }
 </style>
