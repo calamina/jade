@@ -184,13 +184,13 @@ a {
 .com::after {
   content: ".com";
   color: var(--color3);
-  font-weight: 600;
+  font-family: "Cascadia semibold", monospace;
 }
 
 .org::after {
   content: ".org";
   color: var(--color3);
-  font-weight: 600;
+  font-family: "Cascadia semibold", monospace;
 }
 
 p {
@@ -224,7 +224,8 @@ input[type=text] {
   &::placeholder {
     color: var(--color3);
     font-size: 1rem;
-    font-weight: 600;
+  font-family: "Cascadia semibold", monospace;
+
     opacity: 1;
   }
 }
@@ -241,7 +242,7 @@ input[type=text] {
 
 :deep(span) {
   color: var(--color3);
-  font-weight: 600;
+  font-family: "Cascadia semibold", monospace;
 }
 
 .title {
@@ -264,7 +265,7 @@ h2 {
   align-items: center;
   line-height: 1rem;
   font-size: 1rem;
-  font-weight: 700;
+  font-family: "Cascadia semibold", monospace;
   color: var(--dark);
   transition: all .3s ease;
 
@@ -282,7 +283,7 @@ h3 {
   line-height: 1rem;
   font-size: 1rem;
   margin: 1rem;
-  font-weight: 700;
+  font-family: "Cascadia semibold", monospace;
   color: var(--color3);
   transition: all .3s ease;
   opacity: 0;
